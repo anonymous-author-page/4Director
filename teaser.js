@@ -102,10 +102,10 @@ const BEAR_INPUTS = [
   ["T-Rex Input", "new-object-trex.png", "Input image of a T-Rex"],
 ];
 
-// Showcase rows: on the published page these 20 cases stand on their own, in
-// the same four-column form as the teaser, with no baseline or ground-truth
-// comparison. The full edition keeps them in the qualitative carousels
-// instead, where the comparisons live.
+// Showcase rows: these cases stand on their own, in the same four-column form
+// as the teaser, with no baseline or ground-truth comparison. Both editions
+// show them; the full edition additionally compares them against the
+// baselines further down the page.
 const SHOWCASE_CASES = [
   // Game-engine cases lead, then the natural-footage ones.
   ["qual-39", "Ancient Courtyard", "Game Motion"],
@@ -124,7 +124,7 @@ const SHOWCASE_CASES = [
   modules: [],
   inputs: [["Input Image", `${slug}-input.png`, `Input image for ${title}`]],
   result: "v7-full-vace",
-  editions: ["release"],
+  editions: EDITIONS,
 }));
 
 // The three capabilities the hero strip names. A row is labelled by what it
