@@ -470,6 +470,8 @@ function createCarousel(
     id,
     label,
     renderSlide = qualitativeCase,
+    renderProgress,
+    navigator = false,
   },
 ) {
   if (!root) {
@@ -480,6 +482,33 @@ function createCarousel(
     return;
   }
   const totalCases = cases.length;
+  // The navigator doubles as the position readout, so it also appears when
+  // only the bar and the counter are wanted.
+  const progressMarkup = renderProgress
+    ? `
+      <div class="qualitative-progress">
+        <div class="qualitative-progress-heading">
+          <span>
+            <span class="qualitative-progress-kicker">${label}</span>
+            <span class="qualitative-progress-current-title"></span>
+          </span>
+          <span class="qualitative-progress-count">
+            <strong>1</strong> / ${totalCases}
+          </span>
+        </div>
+        <div class="qualitative-progress-bar" aria-hidden="true"><span></span></div>
+        ${navigator
+          ? `<div class="qualitative-progress-list">
+               ${cases
+                 .map((caseData, index) =>
+                   renderProgress(caseData, index, id, totalCases),
+                 )
+                 .join("")}
+             </div>`
+          : ""}
+      </div>
+    `
+    : "";
   root.innerHTML = `
     <div
       class="qualitative-carousel"
@@ -488,6 +517,7 @@ function createCarousel(
       aria-label="${label}"
       tabindex="0"
     >
+      ${progressMarkup}
       <div class="qualitative-carousel-stage">
         <div class="qualitative-carousel-viewport">
           <div class="qualitative-carousel-track">
@@ -525,6 +555,19 @@ function createCarousel(
   const carouselStatus = carousel.querySelector(
     ".qualitative-carousel-status",
   );
+  const progressTitle = carousel.querySelector(
+    ".qualitative-progress-current-title",
+  );
+  const progressCount = carousel.querySelector(
+    ".qualitative-progress-count strong",
+  );
+  const progressFill = carousel.querySelector(
+    ".qualitative-progress-bar > span",
+  );
+  const progressList = carousel.querySelector(".qualitative-progress-list");
+  const progressItems = Array.from(
+    carousel.querySelectorAll(".qualitative-progress-item"),
+  );
   let currentSlide = 0;
 
   function showSlide(index) {
@@ -544,8 +587,45 @@ function createCarousel(
     carouselStatus.textContent =
       `${currentSlide + 1} / ${carouselSlides.length} · ` +
       cases[currentSlide].title;
+    updateProgress();
     carousel.dataset.ready = "true";
   }
+
+  function updateProgress() {
+    if (progressTitle) {
+      progressTitle.textContent = cases[currentSlide].title;
+    }
+    if (progressCount) {
+      progressCount.textContent = String(currentSlide + 1);
+    }
+    if (progressFill) {
+      progressFill.style.width =
+        `${((currentSlide + 1) / carouselSlides.length) * 100}%`;
+    }
+    progressItems.forEach((item, itemIndex) => {
+      item.classList.toggle("is-active", itemIndex === currentSlide);
+      item.classList.toggle("is-complete", itemIndex < currentSlide);
+      if (itemIndex === currentSlide) {
+        item.setAttribute("aria-current", "true");
+      } else {
+        item.removeAttribute("aria-current");
+      }
+    });
+    const active = progressItems[currentSlide];
+    if (active && progressList) {
+      // Keep the active card in view without scrolling the page to it.
+      const offset =
+        active.offsetLeft
+        - (progressList.clientWidth - active.offsetWidth) / 2;
+      progressList.scrollTo({ left: Math.max(offset, 0), behavior: "smooth" });
+    }
+  }
+
+  progressItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      showSlide(Number(item.dataset.progressIndex));
+    });
+  });
 
   previousButton.addEventListener("click", () => {
     showSlide(currentSlide - 1);
@@ -606,6 +686,22 @@ createCarousel(
   {
     id: "qualitative",
     label: "Qualitative comparison",
+    renderProgress: (caseData, index, carouselId, total) => `
+      <button
+        class="qualitative-progress-item"
+        type="button"
+        data-progress-index="${index}"
+        aria-controls="${carouselId}-slide-${index}"
+        aria-label="Show case ${index + 1} of ${total}: ${caseData.title}"
+      >
+        <span class="qualitative-progress-number">${String(index + 1).padStart(2, "0")}</span>
+        <span class="qualitative-progress-copy">
+          <strong>${caseData.title}</strong>
+          <small>${caseData.description}</small>
+        </span>
+      </button>
+    `,
+    navigator: true,
   },
 );
 

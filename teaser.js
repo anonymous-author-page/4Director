@@ -498,4 +498,5 @@ mountCarousel(document.querySelector("#showcase-teaser"), casesForEdition(SHOWCA
   headings: false,
   renderSlide: caseSlide([]),
   renderProgress: caseProgress,
+  navigator: true,
 });
