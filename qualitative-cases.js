@@ -439,7 +439,7 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
         </figure>
 
         <figure class="media-card is-ours-method">
-          <figcaption class="media-title">4Director Output</figcaption>
+          <figcaption class="media-title">4Director (Ours)</figcaption>
           <div class="media-frame">
             <video muted loop playsinline preload="none" data-lazy-video>
               <source
