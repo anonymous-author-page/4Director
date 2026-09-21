@@ -1447,8 +1447,6 @@ main.teaser-container {
   flex-direction: column-reverse;
 }
 
-/* Consistent Memory: same window width as the result sections above and
-   below, with the scene pair centred and every method tile the same size. */
 .authored-comparison-section {
   order: 7;
   padding: 40px 24px 46px;
@@ -1474,86 +1472,18 @@ main.teaser-container {
   letter-spacing: -0.025em;
 }
 
-/* The shared heading caps its paragraph at 68ch, which otherwise leaves that
-   block hugging the left edge of a centred heading. */
 .authored-comparison-section .teaser-heading p {
   margin-right: auto;
   margin-left: auto;
-}
-
-.authored-scene-pair {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  width: min(100%, 1060px);
-  margin: 0 auto 30px;
-}
-
-.authored-grid {
-  display: grid;
-  grid-template-columns: 104px repeat(5, minmax(0, 1fr));
-  align-items: start;
-  gap: 14px;
-}
-
-.authored-row-label {
-  align-self: center;
-  margin: 0;
-  color: #6b7280;
-  font: 700 12px/1.35 "Google Sans", "Noto Sans", sans-serif;
-  letter-spacing: 0.07em;
-  text-align: right;
-  text-transform: uppercase;
-}
-
-.authored-method-name {
-  align-self: end;
-  margin: 0;
-  color: var(--paper-ink);
-  font: 700 16px/1.25 "Google Sans", "Noto Sans", sans-serif;
-  text-align: center;
-}
-
-.authored-grid-fill {
-  grid-column: 1;
-}
-
-.authored-scene-pair .media-title,
-.authored-grid .media-title {
-  min-height: 0;
-  margin: 7px 0 0;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.3;
 }
 
 .authored-comparison-section .media-frame {
   aspect-ratio: 854 / 480;
 }
 
-@media (max-width: 1000px) {
-  .authored-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .authored-row-label {
-    grid-column: 1 / -1;
-    text-align: left;
-  }
-
-  .authored-grid-fill {
-    display: none;
-  }
-}
-
 @media (max-width: 700px) {
   .authored-comparison-section {
     padding-right: 14px;
     padding-left: 14px;
-  }
-
-  .authored-scene-pair,
-  .authored-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

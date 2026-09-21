@@ -13,11 +13,11 @@
     rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   >
-  <link rel="stylesheet" href="./project-page.css?v=20260921-layout3">
+  <link rel="stylesheet" href="./project-page.css?v=20260921-memory">
   <!-- qualitative-cases.js first: it exports the carousel and the lazy
        media observers that teaser.js reuses. -->
-  <script defer src="./qualitative-cases.js?v=20260921-layout3"></script>
-  <script defer src="./teaser.js?v=20260921-layout3"></script>
+  <script defer src="./qualitative-cases.js?v=20260921-memory"></script>
+  <script defer src="./teaser.js?v=20260921-memory"></script>
 </head>
 <body data-edition="release">
   <header class="publication-hero">
@@ -176,112 +176,114 @@
         </p>
       </header>
 
-      <div class="authored-scene-pair">
-        <figure class="media-card">
-          <figcaption class="media-title">Input Image</figcaption>
-          <div class="media-frame">
-            <img
-              src="./assets/camel-disappear-input.png"
-              alt="Input image of a camel in an enclosure"
-              loading="lazy"
-            >
-          </div>
-        </figure>
-        <figure class="media-card">
-          <figcaption class="media-title">Point Cloud</figcaption>
-          <div class="media-frame">
-            <iframe
-              data-lazy-iframe
-              data-src="./viser-client/?playbackPath=../assets/camel-disappear-scene.viser"
-              title="Interactive point cloud for the camel motion case"
-              loading="lazy"
-              allow="fullscreen"
-            ></iframe>
-          </div>
-        </figure>
-      </div>
+      <div data-video-sync>
+        <div class="qualitative-context-row">
+          <figure class="media-card">
+            <figcaption class="media-title">Input Image</figcaption>
+            <div class="media-frame">
+              <img
+                src="./assets/camel-disappear-input.png"
+                alt="Input image of a camel in an enclosure"
+                loading="lazy"
+              >
+            </div>
+          </figure>
+        </div>
 
-      <div class="authored-grid" data-video-sync>
-        <div class="authored-grid-fill" aria-hidden="true"></div>
-        <h3 class="authored-method-name">MotionControl</h3>
-        <h3 class="authored-method-name">Perception as Control</h3>
-        <h3 class="authored-method-name">SymphoMotion</h3>
-        <h3 class="authored-method-name">VerseCrafter</h3>
-        <h3 class="authored-method-name">Ours</h3>
+        <div class="qualitative-hero-row">
+          <figure class="media-card">
+            <figcaption class="media-title">4D Scene Visualization</figcaption>
+            <div class="media-frame">
+              <iframe
+                data-lazy-iframe
+                data-src="./viser-client/?playbackPath=../assets/camel-disappear-scene.viser"
+                title="Interactive point cloud for the camel motion case"
+                loading="lazy"
+                allow="fullscreen"
+              ></iframe>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">4Director (Ours)</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-v7-for-vace.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+        </div>
 
-        <p class="authored-row-label">Input Control</p>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-motioncontrol-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-perception-as-control-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-scene-for-motion-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-versecrafter-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-v7-for-vace-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
+        <h4 class="baseline-output-title">Previous Works</h4>
+        <div class="qualitative-baseline-row">
+          <figure class="media-card">
+            <figcaption class="media-title">MotionControl</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-motioncontrol.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">Perception as Control</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-perception-as-control.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">SymphoMotion</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-scene-for-motion.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">VerseCrafter</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-versecrafter.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+        </div>
 
-        <p class="authored-row-label">Generated Video</p>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-motioncontrol.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-perception-as-control.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-scene-for-motion.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-versecrafter.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
-        <figure class="media-card">
-          <div class="media-frame">
-            <video muted loop playsinline preload="none" data-lazy-video>
-              <source data-src="./assets/camel-disappear-v7-for-vace.mp4" type="video/mp4">
-            </video>
-          </div>
-        </figure>
+        <h4 class="baseline-output-title">Native Control</h4>
+        <div class="qualitative-baseline-row">
+          <figure class="media-card">
+            <figcaption class="media-title">MotionControl</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-motioncontrol-control.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">Perception as Control</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-perception-as-control-control.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">SymphoMotion</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-scene-for-motion-control.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+          <figure class="media-card">
+            <figcaption class="media-title">VerseCrafter</figcaption>
+            <div class="media-frame">
+              <video muted loop playsinline preload="none" data-lazy-video>
+                <source data-src="./assets/camel-disappear-versecrafter-control.mp4" type="video/mp4">
+              </video>
+            </div>
+          </figure>
+        </div>
       </div>
     </div>
   </section>
