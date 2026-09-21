@@ -378,9 +378,9 @@ const GROUND_TRUTH_CASES = [
   },
 ];
 
-function baselineFigure(slug, label, methodSlug, isOurs = false) {
+function baselineFigure(slug, label, methodSlug) {
   return `
-    <figure class="media-card${isOurs ? " is-ours-method" : ""}">
+    <figure class="media-card">
       <figcaption class="media-title">${label}</figcaption>
       <div class="media-frame">
         <video muted loop playsinline preload="none" data-lazy-video>
@@ -397,9 +397,6 @@ function baselineFigure(slug, label, methodSlug, isOurs = false) {
 function qualitativeCase(caseData, index, carouselId, totalCases) {
   // Ground truth is deliberately not shown: every case is presented against
   // the same baselines so the rows stay comparable.
-  const methods = [...BASELINE_METHODS, ["Ours", caseData.result[1]]];
-  const outputHeading = "Baseline Outputs";
-  const outputRowClass = "qualitative-baseline-row";
   return `
     <article
       id="${carouselId}-slide-${index}"
@@ -414,7 +411,7 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
         <p>${caseData.description}</p>
       </header>
 
-      <div class="qualitative-control-row">
+      <div class="qualitative-context-row">
         <figure class="media-card">
           <figcaption class="media-title">Input Image</figcaption>
           <div class="media-frame">
@@ -425,9 +422,11 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
             >
           </div>
         </figure>
+      </div>
 
+      <div class="qualitative-hero-row">
         <figure class="media-card">
-          <figcaption class="media-title">Point Cloud</figcaption>
+          <figcaption class="media-title">4D Scene Visualization</figcaption>
           <div class="media-frame">
             <iframe
               data-lazy-iframe
@@ -438,13 +437,25 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
             ></iframe>
           </div>
         </figure>
+
+        <figure class="media-card is-ours-method">
+          <figcaption class="media-title">4Director Output</figcaption>
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source
+                data-src="./assets/${caseData.slug}-${caseData.result[1]}.mp4"
+                type="video/mp4"
+              >
+            </video>
+          </div>
+        </figure>
       </div>
 
-      <h4 class="baseline-output-title">${outputHeading}</h4>
-      <div class="${outputRowClass}">
-        ${methods
+      <h4 class="baseline-output-title">Previous Works</h4>
+      <div class="qualitative-baseline-row">
+        ${BASELINE_METHODS
           .map(([label, methodSlug]) =>
-            baselineFigure(caseData.slug, label, methodSlug, label === "Ours"),
+            baselineFigure(caseData.slug, label, methodSlug),
           )
           .join("")}
       </div>
