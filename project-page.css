@@ -550,6 +550,7 @@ main.teaser-container {
 .qualitative-progress-bar > span {
   display: block;
   width: 0;
+  min-width: 28px;
   height: 100%;
   border-radius: inherit;
   background: var(--paper-ink);
@@ -1242,6 +1243,10 @@ main.teaser-container {
   border-top: 1px solid var(--paper-hairline);
 }
 
+.qualitative-section .qualitative-progress {
+  background: #fff;
+}
+
 /* --- carousel chrome ----------------------------------------------------- */
 
 .qualitative-progress {
@@ -1479,6 +1484,30 @@ main.teaser-container {
 
 .authored-comparison-section .media-frame {
   aspect-ratio: 854 / 480;
+}
+
+/* The control and the video it produced read as one column, so they share an
+   edge instead of being separated by a caption and a second heading. */
+.authored-pair {
+  display: grid;
+  gap: 0;
+}
+
+.authored-pair .media-frame:first-child {
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.authored-pair .media-frame:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.baseline-output-title small {
+  display: block;
+  margin-top: 4px;
+  color: var(--paper-muted);
+  font-size: 13px;
+  font-weight: 400;
 }
 
 @media (max-width: 700px) {
