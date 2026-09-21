@@ -30,6 +30,7 @@ const BASELINE_METHODS = [
 const NO_GROUND_TRUTH_CASES = [
   {
     slug: "case-bear",
+    editions: ["full"],
     title: "Bear · Object Rotation",
     description: "Clockwise 180° object rotation · Static camera.",
     viewerNote: "Cyan = Moving Foreground",
