@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta
+    name="description"
+    content="4Director controls camera and object motion in video world models with explicit rigid 3D geometry."
+  >
+  <title>4Director — Controlling Video World Models with Rigid 3D Geometry</title>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  >
+  <link rel="stylesheet" href="./project-page.css?v=20260921-mat">
+  <!-- qualitative-cases.js first: it exports the carousel and the lazy
+       media observers that teaser.js reuses. -->
+  <script defer src="./qualitative-cases.js?v=20260921-mat"></script>
+  <script defer src="./teaser.js?v=20260921-mat"></script>
+</head>
+<body data-edition="release">
+  <header class="publication-hero">
+    <div class="publication-container">
+      <div class="project-name">4Director</div>
+      <h1 class="publication-title">
+        Controlling Video World Models with Rigid 3D Geometry
+      </h1>
+
+      <div class="publication-authors">
+        <span class="author-block">Anonymous</span>
+      </div>
+
+      <div class="hero-features" aria-label="4Director capabilities">
+        <div class="hero-feature is-object-motion">
+          <span class="hero-feature-icon" aria-hidden="true">
+            <img src="./assets/feature-hiker.png" alt="">
+          </span>
+          <span>
+            <strong>Object Motion</strong>
+            <small>Rigid 3D trajectories</small>
+          </span>
+        </div>
+        <div class="hero-feature is-object-insertion">
+          <span class="hero-feature-icon" aria-hidden="true">
+            <img src="./assets/feature-camel.png" alt="">
+          </span>
+          <span>
+            <strong>New Object Insertion</strong>
+            <small>Reference-guided composition</small>
+          </span>
+        </div>
+        <div class="hero-feature is-joint-control">
+          <span class="hero-feature-icon" aria-hidden="true">
+            <img src="./assets/feature-camera-triangle.png" alt="">
+          </span>
+          <span>
+            <strong>Joint Camera and Object Control</strong>
+            <small>Jointly authored trajectories</small>
+          </span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="paper-section is-soft tldr-section">
+    <div class="text-container">
+      <p class="tldr">
+        <strong>TL;DR:</strong>
+        4Director uses complete object meshes and rigid trajectories in a
+        shared 3D space to jointly control the camera, existing objects, and
+        inserted objects in video world models.
+      </p>
+    </div>
+  </section>
+
+  <section class="paper-section supplementary-section">
+    <figure class="supplementary-figure">
+      <video
+        controls
+        playsinline
+        preload="none"
+        poster="./assets/4Director-supplementary-poster.jpg?v=20260921-mat"
+        aria-label="4Director supplementary video"
+      >
+        <source
+          src="./assets/4Director-supplementary.mp4?v=20260921-mat"
+          type="video/mp4"
+        >
+      </video>
+    </figure>
+  </section>
+
+  <section class="paper-section abstract-section">
+    <div class="text-container">
+      <h2 class="section-title">Abstract</h2>
+      <p class="abstract-copy">
+        Precise control over camera and object motion is essential for
+        professional video production. Existing methods support either camera
+        control alone or coarse object control, through image-plane cues that
+        are ambiguous in depth and rotation or through 3D tracks and blobs
+        that lack complete geometry and lose consistency across viewpoint
+        changes. We introduce <strong>4Director</strong>, a video world model
+        conditioned on an explicit 4D scene representation: each object is
+        reconstructed once as a canonical mesh and moved by one prescribed
+        rigid transformation per frame. This representation provides an
+        intuitive 3D control interface and prevents unobserved geometry from
+        being regenerated independently in every frame. We render the
+        controlled scene as a depth video and introduce a
+        <em>Motion Adapter</em> that transforms this geometric scaffold into
+        video while synthesizing view-consistent appearance, illumination,
+        and non-rigid dynamics. For training, we construct
+        <em>RealCOD-Rigid</em>, a new dataset of 20,774 clips annotated with
+        rigid 3D scenes by our automatic pipeline. We further introduce
+        <em>Identity-Gated IoU (IG-IoU)</em>, which jointly evaluates
+        adherence to prescribed object motion and preservation of object
+        identity. Experiments demonstrate that 4Director consistently
+        outperforms prior methods in visual quality and in camera and object
+        control.
+      </p>
+    </div>
+  </section>
+
+  <section
+    class="teaser-section"
+    id="teaser"
+    aria-label="Teaser scenes"
+  ></section>
+
+  <section class="paper-section pipeline-section">
+    <div class="text-container">
+      <h2 class="section-title">Method</h2>
+    </div>
+    <figure class="pipeline-figure">
+      <img
+        src="./assets/pipeline.png?v=20260918-v6"
+        alt="4Director pipeline: an input image becomes rigid 3D geometry with user-defined object and camera trajectories; depth rendering drives a Motion Adapter alongside a frozen Wan-DiT to produce the generated video."
+        loading="lazy"
+      >
+    </figure>
+  </section>
+
+
+  <section
+    class="teaser-section showcase-section"
+    id="showcase-teaser"
+    aria-label="Showcase results"
+  ></section>
+
+  <section class="qualitative-section">
+    <div class="qualitative-container">
+      <header class="qualitative-header">
+        <h2>Qualitative Comparison</h2>
+        <p>
+          Every case beside the same set of baselines.
+        </p>
+      </header>
+
+      <div id="qualitative-cases" class="qualitative-cases"></div>
+
+      <noscript>
+        <p class="javascript-note">
+          JavaScript is required to load the qualitative comparisons.
+        </p>
+      </noscript>
+    </div>
+  </section>
+
+  <section class="authored-comparison-section" aria-labelledby="consistent-memory-title">
+    <div class="authored-comparison-container">
+      <header class="teaser-heading">
+        <h2 id="consistent-memory-title">Consistent Memory</h2>
+        <p>
+          The camel leaves the frame and returns. Each method receives the
+          same authored motion in its own native control representation.
+        </p>
+      </header>
+
+      <div class="authored-scene-pair">
+        <figure class="media-card">
+          <figcaption class="media-title">Input Image</figcaption>
+          <div class="media-frame">
+            <img
+              src="./assets/camel-disappear-input.png"
+              alt="Input image of a camel in an enclosure"
+              loading="lazy"
+            >
+          </div>
+        </figure>
+        <figure class="media-card">
+          <figcaption class="media-title">Point Cloud</figcaption>
+          <div class="media-frame">
+            <iframe
+              data-lazy-iframe
+              data-src="./viser-client/?playbackPath=../assets/camel-disappear-scene.viser"
+              title="Interactive point cloud for the camel motion case"
+              loading="lazy"
+              allow="fullscreen"
+            ></iframe>
+          </div>
+        </figure>
+      </div>
+
+      <div class="authored-grid" data-video-sync>
+        <div class="authored-grid-fill" aria-hidden="true"></div>
+        <h3 class="authored-method-name">MotionControl</h3>
+        <h3 class="authored-method-name">Perception as Control</h3>
+        <h3 class="authored-method-name">SymphoMotion</h3>
+        <h3 class="authored-method-name">VerseCrafter</h3>
+        <h3 class="authored-method-name">Ours</h3>
+
+        <p class="authored-row-label">Input Control</p>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-motioncontrol-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-perception-as-control-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-scene-for-motion-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-versecrafter-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-v7-for-vace-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+
+        <p class="authored-row-label">Generated Video</p>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-motioncontrol.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-perception-as-control.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-scene-for-motion.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-versecrafter.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+        <figure class="media-card is-ours-method">
+          <div class="media-frame">
+            <video muted loop playsinline preload="none" data-lazy-video>
+              <source data-src="./assets/camel-disappear-v7-for-vace.mp4" type="video/mp4">
+            </video>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    4Director · Anonymous project page
+  </footer>
+</body>
+</html>

@@ -1,0 +1,1534 @@
+:root {
+  --paper-blue: #202124;
+  --paper-violet: #202124;
+  --paper-ink: #202124;
+  --paper-muted: #64676c;
+  --paper-line: #dadce0;
+  --paper-soft: #f8f9fa;
+  --paper-tint: #f8f9fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #fff;
+  color: var(--paper-ink);
+  font-family: "Noto Sans", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.publication-hero {
+  position: relative;
+  order: 1;
+  overflow: hidden;
+  padding: 68px 24px 42px;
+  background: #fff;
+  text-align: center;
+}
+
+.publication-container {
+  position: relative;
+  width: min(100%, 1040px);
+  margin: 0 auto;
+}
+
+.project-name {
+  margin-bottom: 13px;
+  color: #17181a;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: clamp(44px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.publication-title {
+  max-width: 900px;
+  margin: 0 auto 22px;
+  color: #36383c;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: clamp(25px, 3vw, 38px);
+  font-weight: 450;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+}
+
+.publication-authors {
+  color: #575c69;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.is-object-motion {
+  --feature-color: #0070c0;
+  --feature-rgb: 0 112 192;
+}
+
+.is-object-insertion {
+  --feature-color: #ed7d31;
+  --feature-rgb: 237 125 49;
+}
+
+.is-joint-control {
+  --feature-color: #7554d6;
+  --feature-rgb: 117 84 214;
+}
+
+.hero-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  width: min(100%, 1040px);
+  margin: 28px auto 0;
+  overflow: hidden;
+  border: 1px solid #c9cdd2;
+  border-radius: 9px;
+}
+
+.hero-feature {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding: 13px 17px;
+  border-left: 1px solid var(--paper-line);
+  background: #fff;
+  text-align: left;
+}
+
+.hero-feature:first-child {
+  border-left: 0;
+}
+
+.hero-feature-icon {
+  display: grid;
+  flex: none;
+  width: 62px;
+  height: 46px;
+  place-items: center;
+}
+
+.hero-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-feature strong,
+.hero-feature small {
+  display: block;
+}
+
+.hero-feature strong {
+  color: var(--paper-ink);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.hero-feature small {
+  margin-top: 3px;
+  color: var(--paper-muted);
+  font-size: 11px;
+  line-height: 1.3;
+}
+
+.paper-section {
+  padding: 34px 24px;
+}
+
+.paper-section.is-soft {
+  border-top: 1px solid var(--paper-line);
+  border-bottom: 1px solid var(--paper-line);
+  background: var(--paper-soft);
+}
+
+.tldr-section {
+  order: 3;
+}
+
+.abstract-section {
+  order: 5;
+}
+
+.supplementary-section {
+  order: 4;
+  padding: 22px 24px 10px;
+}
+
+.text-container {
+  width: min(100%, 860px);
+  margin: 0 auto;
+}
+
+.section-title {
+  margin: 0 0 15px;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+
+.tldr {
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.tldr strong {
+  color: var(--paper-ink);
+}
+
+.abstract-copy {
+  margin: 0;
+  color: #333;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: justify;
+}
+
+.teaser-section {
+  order: 2;
+  padding: 30px 4px 42px;
+}
+
+main.teaser-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.teaser-column-headings {
+  display: grid;
+  grid-template-columns:
+    228px
+    minmax(0, 0.49fr)
+    repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 0 0 11px;
+  border-bottom: 1px solid var(--paper-line);
+  color: #4a4d52;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.teaser-heading-input {
+  grid-column: 2;
+  line-height: 1.15;
+}
+
+.teaser-heading-puppet {
+  grid-column: 3;
+}
+
+.teaser-heading-depth {
+  grid-column: 4;
+}
+
+.teaser-heading-video {
+  grid-column: 5;
+}
+
+.case {
+  display: grid;
+  /* Wide enough for the busiest icon equation, bear + T-Rex + camera, so no
+     row has to scale its icons down to fit. */
+  grid-template-columns: minmax(242px, 252px) minmax(0, 1fr);
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0 10px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.case:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.feature-rail {
+  position: relative;
+  display: flex;
+  min-height: 166px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 6px 12px 6px 0;
+  border-right: 1px solid var(--paper-line);
+  background: transparent;
+}
+
+.feature-row-index {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  color: #a0a4aa;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.feature-row-visual {
+  display: block;
+  width: 100%;
+  height: 88px;
+  margin-bottom: 7px;
+}
+
+.feature-row-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.feature-equation {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+/* Icons shrink together rather than spilling past the rail, so a row that
+   gains a module never drops the last one out of sight. */
+.feature-module {
+  display: grid;
+  flex: 0 1 auto;
+  min-width: 0;
+  height: 84px;
+  place-items: center;
+}
+
+.is-hiker-module {
+  width: 44px;
+}
+
+.is-camel-module {
+  width: 68px;
+}
+
+.is-camera-module {
+  width: 56px;
+}
+
+.feature-plus {
+  display: grid;
+  flex: none;
+  width: 8px;
+  color: #111;
+  font-family: Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1;
+  place-items: center;
+}
+
+.feature-rail h2 {
+  margin: 0;
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  white-space: nowrap;
+}
+
+.feature-rail p {
+  margin: 5px 0 0;
+  color: var(--paper-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.feature-row .media-title {
+  display: none;
+}
+
+.case-details {
+  position: relative;
+  flex: none;
+  color: var(--paper-muted);
+  font-size: 12px;
+  text-align: right;
+}
+
+.case-details summary {
+  cursor: pointer;
+  user-select: none;
+}
+
+.case-details code {
+  display: block;
+  max-width: min(520px, 70vw);
+  margin-top: 7px;
+  overflow-wrap: anywhere;
+  color: #555;
+  font-size: 11px;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.49fr)
+    repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 3px;
+}
+
+.teaser-input-stack {
+  display: grid;
+  align-self: stretch;
+  gap: 3px;
+}
+
+.teaser-input-stack.is-single-input {
+  align-items: center;
+}
+
+.media-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column-reverse;
+  margin: 0;
+  text-align: center;
+}
+
+.media-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  margin: 9px 0 0;
+  color: #353a47;
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.media-frame {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  aspect-ratio: 832 / 480;
+  border: 1px solid var(--paper-line);
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.media-frame > img,
+.media-frame > video,
+.media-frame > iframe,
+.video-stack > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+.qualitative-section {
+  order: 6;
+  padding: 54px 24px 72px;
+  border-top: 1px solid var(--paper-line);
+  background: var(--paper-soft);
+}
+
+.qualitative-container {
+  width: min(100%, 1740px);
+  margin: 0 auto;
+}
+
+.qualitative-header {
+  max-width: 850px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.qualitative-header h2 {
+  margin: 0 0 10px;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.qualitative-header p,
+.qualitative-case-heading p {
+  margin: 0;
+  color: var(--paper-muted);
+  font-size: 15px;
+}
+
+.qualitative-carousel {
+  position: relative;
+  padding: 0 54px;
+  outline: none;
+}
+
+.qualitative-progress {
+  margin-bottom: 18px;
+  padding: 17px 18px 11px;
+  border: 1px solid var(--paper-line);
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.qualitative-progress-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.qualitative-progress-kicker {
+  display: block;
+  color: #6a6d72;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.qualitative-progress-current-title {
+  display: block;
+  margin-top: 4px;
+  color: #292e3a;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.qualitative-progress-count {
+  display: flex;
+  flex: none;
+  align-items: baseline;
+  gap: 6px;
+  color: #8a8f9c;
+  font-size: 13px;
+}
+
+.qualitative-progress-count strong {
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 27px;
+  line-height: 1;
+}
+
+.qualitative-progress-bar {
+  height: 4px;
+  margin-top: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e9ebf1;
+}
+
+.qualitative-progress-bar > span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--paper-ink);
+  transition: width 360ms ease;
+}
+
+.qualitative-progress-list {
+  position: relative;
+  display: flex;
+  gap: 9px;
+  margin-top: 13px;
+  padding: 2px 1px 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-color: #bdc5db transparent;
+  scrollbar-width: thin;
+}
+
+.qualitative-progress-item {
+  position: relative;
+  display: grid;
+  flex: 0 0 210px;
+  grid-template-columns: 31px minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  min-height: 64px;
+  padding: 9px 11px;
+  overflow: hidden;
+  border: 1px solid #e1e4eb;
+  border-radius: 5px;
+  background: #fff;
+  color: #343947;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.qualitative-progress-item:hover {
+  border-color: #8b8f95;
+}
+
+.qualitative-progress-number {
+  display: grid;
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: #eff1f5;
+  color: #737988;
+  font-size: 10px;
+  font-weight: 800;
+  place-items: center;
+}
+
+.qualitative-progress-copy {
+  min-width: 0;
+}
+
+.qualitative-progress-copy strong {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qualitative-progress-copy strong {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.qualitative-progress-copy small {
+  display: -webkit-box;
+  margin-top: 3px;
+  overflow: hidden;
+  color: #7a808e;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.qualitative-progress-item.is-complete {
+  border-color: #cfd2d6;
+  background: #fff;
+}
+
+.qualitative-progress-item.is-complete .qualitative-progress-number {
+  background: #e6e8eb;
+  color: #52565b;
+}
+
+.qualitative-progress-item.is-active {
+  border-color: var(--paper-ink);
+  background: #fff;
+  box-shadow: inset 0 -3px 0 var(--paper-ink);
+  color: var(--paper-ink);
+}
+
+.qualitative-progress-item.is-active .qualitative-progress-number {
+  background: var(--paper-ink);
+  color: #fff;
+}
+
+.qualitative-progress-item.is-active .qualitative-progress-copy small {
+  color: var(--paper-muted);
+}
+
+.qualitative-progress-item:focus-visible {
+  outline: 3px solid rgb(32 33 36 / 18%);
+  outline-offset: 2px;
+}
+
+.qualitative-carousel-stage {
+  position: relative;
+}
+
+.qualitative-carousel-viewport {
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.qualitative-carousel-track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.qualitative-carousel .qualitative-case {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 34px 18px 42px;
+  border: 0;
+}
+
+.qualitative-carousel .qualitative-case + .qualitative-case {
+  margin-top: 0;
+}
+
+.qualitative-carousel-button {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  padding: 0 0 4px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: rgb(28 28 31 / 88%);
+  box-shadow: 0 4px 14px rgb(0 0 0 / 20%);
+  color: #fff;
+  font: 400 34px/1 Arial, sans-serif;
+  cursor: pointer;
+  place-items: center;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease,
+    background 160ms ease;
+}
+
+.qualitative-carousel-button.is-previous {
+  left: -49px;
+}
+
+.qualitative-carousel-button.is-next {
+  right: -49px;
+}
+
+.qualitative-carousel-button:hover:not(:disabled),
+.qualitative-carousel-button:focus-visible {
+  background: #000;
+  transform: translateY(-50%) scale(1.06);
+}
+
+.qualitative-carousel-button:focus-visible {
+  outline: 3px solid rgb(57 119 255 / 35%);
+  outline-offset: 3px;
+}
+
+.qualitative-carousel-button:disabled {
+  opacity: 0.22;
+  cursor: default;
+}
+
+.qualitative-carousel-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.qualitative-case {
+  padding: 34px 0 50px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.qualitative-case + .qualitative-case {
+  margin-top: 6px;
+}
+
+.qualitative-case-heading {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.qualitative-case-heading h3 {
+  margin: 0 0 7px;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.qualitative-control-row,
+.qualitative-baseline-row {
+  display: grid;
+  align-items: start;
+}
+
+.qualitative-control-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(100%, 1320px);
+  margin: 0 auto;
+}
+
+.baseline-output-title {
+  margin: 42px 0 15px;
+  color: #444;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.qualitative-baseline-row {
+  grid-template-columns: repeat(5, minmax(220px, 1fr));
+  gap: 12px;
+  width: 100%;
+  padding: 4px 3px 15px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+}
+
+.qualitative-baseline-row .media-title {
+  min-height: 43px;
+  font-size: 16px;
+}
+
+.javascript-note {
+  margin: 1rem 0 0;
+  color: var(--paper-muted);
+  text-align: center;
+}
+
+.site-footer {
+  order: 9;
+  padding: 30px 24px 40px;
+  border-top: 1px solid var(--paper-line);
+  color: #888;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .case {
+    grid-template-columns: 252px minmax(0, 1fr);
+    align-items: flex-start;
+  }
+
+  .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 8px;
+  }
+
+  .teaser-column-headings {
+    display: none;
+  }
+
+  .feature-row .media-title {
+    display: flex;
+  }
+}
+
+@media (max-width: 680px) {
+  .publication-hero {
+    padding: 54px 18px 38px;
+  }
+
+  .publication-authors {
+    font-size: 16px;
+  }
+
+  .hero-features {
+    grid-template-columns: 1fr;
+    width: min(100%, 430px);
+  }
+
+  .hero-feature {
+    border-top: 1px solid var(--paper-line);
+    border-left: 0;
+  }
+
+  .hero-feature:first-child {
+    border-top: 0;
+  }
+
+  .paper-section,
+  .teaser-section,
+  .qualitative-section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .case {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    padding: 16px 0 18px;
+  }
+
+  .feature-rail {
+    display: flex;
+    min-height: 0;
+    align-items: flex-start;
+    padding: 13px 42px 15px 13px;
+    border-right: 0;
+    border-bottom: 1px solid var(--paper-line);
+  }
+
+  .feature-row-visual {
+    width: 100%;
+    height: 72px;
+    margin: 0 0 7px;
+  }
+
+  .feature-rail h2 {
+    align-self: auto;
+    font-size: 18px;
+  }
+
+  .feature-rail p {
+    align-self: auto;
+    margin-top: 3px;
+  }
+
+  .case-details {
+    margin-top: 12px;
+    text-align: left;
+  }
+
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qualitative-control-row {
+    grid-template-columns: 1fr;
+  }
+
+  .qualitative-carousel {
+    padding: 0;
+  }
+
+      .qualitative-progress {
+    margin-bottom: 13px;
+    padding: 14px 12px 8px;
+  }
+
+  .qualitative-progress-heading {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .qualitative-progress-current-title {
+    font-size: 14px;
+  }
+
+  .qualitative-progress-count {
+    gap: 4px;
+  }
+
+  .qualitative-progress-count strong {
+    font-size: 23px;
+  }
+
+  .qualitative-progress-item {
+    flex-basis: 178px;
+  }
+
+  .qualitative-carousel .qualitative-case {
+    padding: 28px 11px 34px;
+  }
+
+  .qualitative-carousel-button {
+    top: 48%;
+    width: 38px;
+    height: 38px;
+    background: rgb(20 20 22 / 78%);
+    font-size: 31px;
+  }
+
+  .qualitative-carousel-button.is-previous {
+    left: 6px;
+  }
+
+  .qualitative-carousel-button.is-next {
+    right: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qualitative-carousel-track,
+  .qualitative-progress-bar > span,
+  .qualitative-progress-item {
+    transition: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Bear + T-Rex teaser block (see bear-teaser.js)
+   Shares .teaser-section / .case / .media-grid with the hiker block; only the
+   pieces that block does not have are defined here.
+   --------------------------------------------------------------------------- */
+
+.bear-teaser-section {
+  order: 2;
+  padding-top: 8px;
+  border-top: 1px solid var(--paper-line);
+}
+
+/* The bear ships at the camel's proportions, so the two teaser pages carry the
+   same visual weight in the rail. */
+.is-bear-module {
+  width: 60px;
+}
+
+.is-trex-module {
+  width: 88px;
+}
+
+.bear-seed-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 7px;
+}
+
+.bear-seed-label {
+  margin-right: 2px;
+  color: var(--paper-muted);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bear-seed-button {
+  padding: 2px 7px;
+  border: 1px solid var(--paper-line);
+  border-radius: 999px;
+  background: #fff;
+  color: #4a4d52;
+  cursor: pointer;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.bear-seed-button:hover {
+  border-color: #9aa0a8;
+  color: var(--paper-ink);
+}
+
+.bear-seed-button.is-active {
+  border-color: #111;
+  background: #111;
+  color: #fff;
+}
+
+@media (max-width: 1100px) {
+  .bear-teaser-section .media-card.is-bear-generated .media-title {
+    display: flex;
+  }
+}
+
+/* Showcase rows (release edition): the same four-column teaser form, but the
+   cases carry no icon equation, so the rail is heading-only. */
+.showcase-section {
+  order: 8;
+  padding-top: 8px;
+  border-top: 1px solid var(--paper-line);
+}
+
+.showcase-section .feature-rail {
+  min-height: 0;
+}
+
+/* Method figure. Sits between the teaser and the single-case showcase. */
+.supplementary-figure {
+  width: min(100%, 880px);
+  margin: 0 auto;
+}
+
+.supplementary-figure video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: #000;
+}
+
+.pipeline-section {
+  order: 6;
+}
+
+.pipeline-figure {
+  width: min(100%, 1320px);
+  margin: 18px auto 0;
+}
+
+.pipeline-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* The showcase reuses the qualitative carousel, so its slides need the same
+   full-width flex basis the qualitative slides get. */
+.qualitative-carousel .teaser-page {
+  flex: 0 0 100%;
+  min-width: 0;
+  /* No side padding: .qualitative-carousel already insets by 54px to clear the
+     overlaid prev/next buttons, and doubling it narrows the row until the
+     column headings no longer line up with the columns. */
+  padding: 10px 0 16px;
+}
+
+.teaser-section .showcase-carousel-mount {
+  margin-top: 4px;
+}
+
+/* Match the slide's side padding so the column headings line up with the
+   columns underneath them. */
+.teaser-section .teaser-column-headings {
+  padding-right: 54px;
+  padding-left: 54px;
+}
+
+@media (max-width: 760px) {
+  .teaser-section .teaser-column-headings {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.teaser-section .qualitative-carousel .case {
+  padding-top: 0;
+  border-top: 0;
+}
+
+@media (max-width: 760px) {
+  .qualitative-carousel .teaser-page {
+    padding: 10px 0 16px;
+  }
+}
+
+/* ===========================================================================
+   Page polish
+   Section headings, vertical rhythm and softer carousel chrome. The palette
+   stays monochrome; only weight, spacing and depth change.
+   =========================================================================== */
+
+:root {
+  --paper-hairline: #e8eaed;
+  --paper-shadow: 0 1px 2px rgba(32, 33, 36, 0.06),
+    0 4px 16px rgba(32, 33, 36, 0.05);
+}
+
+/* --- section headings ---------------------------------------------------- */
+
+.teaser-heading {
+  width: min(100%, 1740px);
+  margin: 0 auto 22px;
+  padding: 0 54px;
+}
+
+.teaser-kicker {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--paper-muted);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.teaser-heading h2 {
+  margin: 0;
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.teaser-heading p {
+  max-width: 68ch;
+  margin: 9px 0 0;
+  color: var(--paper-muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* --- vertical rhythm ----------------------------------------------------- */
+
+.teaser-section {
+  padding: 46px 4px 50px;
+  border-top: 1px solid var(--paper-hairline);
+}
+
+.teaser-section:first-of-type {
+  border-top: 0;
+}
+
+.bear-teaser-section,
+.showcase-section {
+  padding-top: 46px;
+  border-top: 1px solid var(--paper-hairline);
+}
+
+.pipeline-section {
+  padding-bottom: 8px;
+}
+
+.qualitative-section {
+  border-top: 1px solid var(--paper-hairline);
+}
+
+/* --- carousel chrome ----------------------------------------------------- */
+
+.qualitative-progress {
+  border-color: var(--paper-hairline);
+  border-radius: 12px;
+  background: var(--paper-soft);
+  box-shadow: none;
+}
+
+.qualitative-progress-item {
+  border-color: var(--paper-hairline);
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.qualitative-progress-item:hover {
+  border-color: #bdc1c6;
+}
+
+.qualitative-progress-item.is-active {
+  box-shadow: var(--paper-shadow);
+}
+
+.qualitative-carousel-button {
+  border-color: var(--paper-hairline);
+  box-shadow: var(--paper-shadow);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.qualitative-carousel-button:not(:disabled):hover {
+  transform: translateY(-50%) scale(1.06);
+}
+
+/* --- media cards --------------------------------------------------------- */
+
+.media-frame {
+  border-color: var(--paper-hairline);
+  border-radius: 6px;
+  box-shadow: var(--paper-shadow);
+}
+
+/* An outline rather than a border, so the rule clears the clip entirely. */
+.media-card.is-ours-method .media-frame {
+  outline: 3px solid #188038;
+  outline-offset: 5px;
+  box-shadow: var(--paper-shadow);
+}
+
+.teaser-column-headings {
+  border-bottom-color: var(--paper-hairline);
+}
+
+.case {
+  border-top-color: var(--paper-hairline);
+}
+
+/* --- focus visibility ---------------------------------------------------- */
+
+.qualitative-carousel-button:focus-visible,
+.qualitative-progress-item:focus-visible,
+.bear-seed-button:focus-visible,
+.qualitative-carousel:focus-visible {
+  outline: 2px solid var(--paper-ink);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .teaser-heading {
+    padding: 0 2px;
+  }
+
+  .teaser-heading h2 {
+    font-size: 22px;
+  }
+}
+
+/* Rows stacked inside one carousel page. */
+.teaser-page .case + .case {
+  border-top: 1px solid var(--paper-hairline);
+  padding-top: 12px;
+}
+
+/* Per-case capability badge in the rail: same wording and icons as the hero
+   strip, so a row states which of the three controls it exercises. */
+.capability {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.capability-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  place-items: center;
+}
+
+.capability-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.capability-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.capability-copy strong {
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.capability-copy small {
+  margin-top: 1px;
+  color: var(--paper-muted);
+  font-size: 11.5px;
+  line-height: 1.3;
+  white-space: normal;
+}
+
+/* The results section stands apart from the teaser above it: its own ground,
+   full-width rules, and a heading that matches the qualitative section. */
+.showcase-section {
+  padding: 52px 4px 56px;
+  border-top: 1px solid var(--paper-line);
+  border-bottom: 1px solid var(--paper-line);
+  background: var(--paper-soft);
+}
+
+.showcase-section .teaser-heading {
+  margin-bottom: 26px;
+  text-align: center;
+}
+
+.showcase-section .teaser-heading h2 {
+  font-size: 30px;
+}
+
+.showcase-section .qualitative-progress {
+  background: #fff;
+}
+
+/* Rows here have no icon equation, so the rail is heading plus one line. */
+.showcase-section .feature-rail {
+  min-height: 0;
+}
+
+.showcase-section .feature-row-index {
+  top: 2px;
+}
+
+/* --- results section: centred heading, panels two by two ------------------ */
+
+.showcase-section .teaser-heading {
+  width: min(100%, 900px);
+  margin: 0 auto 30px;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.showcase-section .teaser-heading h2 {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Two panels across is twice the width of a teaser column, so the whole
+   window -- navigator, arrows and slides -- is capped and centred instead of
+   running the full page width. One width, set here, drives all of it. */
+/* Same width as the Qualitative Comparison window below it, so the two
+   result sections line up. */
+.showcase-section .showcase-carousel-mount {
+  width: min(100%, 1740px);
+  margin: 4px auto 0;
+  padding: 0 24px;
+}
+
+.media-grid.is-paired {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 10px;
+}
+
+.showcase-section .case {
+  grid-template-columns: minmax(150px, 170px) minmax(0, 1fr);
+}
+
+.showcase-section .feature-rail h2 {
+  font-size: 15px;
+}
+
+/* Each panel labels itself, because a two-by-two block has no column header. */
+.feature-row.is-paired .media-title {
+  display: flex;
+  min-height: 0;
+  margin: 8px 0 0;
+  font-size: 14px;
+}
+
+.feature-row.is-paired .media-card {
+  flex-direction: column-reverse;
+}
+
+/* Consistent Memory: same window width as the result sections above and
+   below, with the scene pair centred and every method tile the same size. */
+.authored-comparison-section {
+  order: 7;
+  padding: 40px 24px 46px;
+  border-top: 1px solid var(--paper-line);
+  background: #fff;
+}
+
+.authored-comparison-container {
+  width: min(100%, 1740px);
+  margin: 0 auto;
+}
+
+.authored-comparison-section .teaser-heading {
+  width: min(100%, 860px);
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.authored-comparison-section .teaser-heading h2 {
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+/* The shared heading caps its paragraph at 68ch, which otherwise leaves that
+   block hugging the left edge of a centred heading. */
+.authored-comparison-section .teaser-heading p {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.authored-scene-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(100%, 1060px);
+  margin: 0 auto 30px;
+}
+
+.authored-grid {
+  display: grid;
+  grid-template-columns: 104px repeat(5, minmax(0, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+
+.authored-row-label {
+  align-self: center;
+  margin: 0;
+  color: #6b7280;
+  font: 700 12px/1.35 "Google Sans", "Noto Sans", sans-serif;
+  letter-spacing: 0.07em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.authored-method-name {
+  align-self: end;
+  margin: 0;
+  color: var(--paper-ink);
+  font: 700 16px/1.25 "Google Sans", "Noto Sans", sans-serif;
+  text-align: center;
+}
+
+.authored-grid-fill {
+  grid-column: 1;
+}
+
+.authored-scene-pair .media-title,
+.authored-grid .media-title {
+  min-height: 0;
+  margin: 7px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.authored-comparison-section .media-frame {
+  aspect-ratio: 854 / 480;
+}
+
+@media (max-width: 1000px) {
+  .authored-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .authored-row-label {
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .authored-grid-fill {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .authored-comparison-section {
+    padding-right: 14px;
+    padding-left: 14px;
+  }
+
+  .authored-scene-pair,
+  .authored-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
