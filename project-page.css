@@ -1284,13 +1284,6 @@ main.teaser-container {
   box-shadow: var(--paper-shadow);
 }
 
-/* An outline rather than a border, so the rule clears the clip entirely. */
-.media-card.is-ours-method .media-frame {
-  outline: 3px solid #188038;
-  outline-offset: 5px;
-  box-shadow: var(--paper-shadow);
-}
-
 .teaser-column-headings {
   border-bottom-color: var(--paper-hairline);
 }
