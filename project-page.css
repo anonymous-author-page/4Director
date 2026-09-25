@@ -220,7 +220,7 @@ main.teaser-container {
 .teaser-column-headings {
   display: grid;
   grid-template-columns:
-    228px
+    255px
     minmax(0, 0.49fr)
     repeat(3, minmax(0, 1fr));
   gap: 3px;
@@ -1693,5 +1693,70 @@ main.teaser-container,
   .showcase-section .teaser-heading h2,
   .authored-comparison-section .teaser-heading h2 {
     font-size: 23px;
+  }
+
+  /* Keep interactive media usable at full width, place the two passive
+     outputs side by side, and pair multiple input images in one row. */
+  .teaser-section:not(.showcase-section) .media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 8px;
+  }
+
+  .teaser-section:not(.showcase-section) .teaser-input-stack,
+  .teaser-section:not(.showcase-section) .media-grid > .media-card:nth-child(2) {
+    grid-column: 1 / -1;
+  }
+
+  .teaser-section:not(.showcase-section) .teaser-input-stack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+    gap: 8px;
+  }
+
+  .teaser-section:not(.showcase-section) .teaser-input-stack.is-single-input {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 300px);
+    margin: 0 auto;
+  }
+
+  .teaser-section .media-title {
+    min-height: 34px;
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  .teaser-section .media-title small {
+    font-size: 10px;
+  }
+
+  .qualitative-baseline-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 8px;
+    overflow: visible;
+  }
+
+  .qualitative-baseline-row .media-title {
+    min-height: 32px;
+    font-size: 12px;
+  }
+
+  .qualitative-carousel .qualitative-case {
+    padding-right: 7px;
+    padding-left: 7px;
+  }
+
+  .qualitative-hero-row {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .qualitative-case-heading {
+    margin-bottom: 20px;
+  }
+
+  .abstract-copy {
+    font-size: 14px;
+    line-height: 1.68;
+    text-align: left;
   }
 }

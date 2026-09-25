@@ -428,7 +428,7 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
 
       <div class="qualitative-hero-row">
         <figure class="media-card">
-          <figcaption class="media-title">4D Scene Visualization<small>Interactive</small></figcaption>
+          <figcaption class="media-title">Point Cloud<small>Interactive</small></figcaption>
           <div class="media-frame">
             <iframe
               data-lazy-iframe
