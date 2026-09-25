@@ -429,14 +429,27 @@ main.teaser-container {
 
 .media-title small,
 .teaser-column-headings small {
-  display: block;
-  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
   margin-top: 1px;
   color: var(--paper-muted);
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0;
   line-height: 1.2;
+}
+
+.media-title small::before,
+.teaser-column-headings small::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  flex: none;
+  background: #0070c0;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='black' d='M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v208h-32V96c0-17.7-14.3-32-32-32s-32 14.3-32 32v272l-41.4-55.2c-10.6-14.1-30.7-17-44.8-6.4s-17 30.7-6.4 44.8l96 128c9.4 12.5 24.2 20.8 40.6 20.8H336c61.9 0 112-50.1 112-112V160c0-17.7-14.3-32-32-32s-32 14.3-32 32v80h-32V96c0-17.7-14.3-32-32-32s-32 14.3-32 32v144h-32V32z'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='black' d='M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v208h-32V96c0-17.7-14.3-32-32-32s-32 14.3-32 32v272l-41.4-55.2c-10.6-14.1-30.7-17-44.8-6.4s-17 30.7-6.4 44.8l96 128c9.4 12.5 24.2 20.8 40.6 20.8H336c61.9 0 112-50.1 112-112V160c0-17.7-14.3-32-32-32s-32 14.3-32 32v80h-32V96c0-17.7-14.3-32-32-32s-32 14.3-32 32v144h-32V32z'/%3E%3C/svg%3E") center / contain no-repeat;
 }
 
 .media-title:has(small) {
