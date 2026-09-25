@@ -1546,3 +1546,152 @@ main.teaser-container {
     padding-left: 14px;
   }
 }
+
+/* ===========================================================================
+   Layout consistency
+   One content width, one text width, one heading style and one vertical
+   rhythm for every section. Carousels add 2 x 54px around the content width
+   for their overlaid arrows, so their visible box matches the plain sections.
+   =========================================================================== */
+
+:root {
+  --page-wide: 1240px;
+  --page-text: 860px;
+  --carousel-gutter: 54px;
+  --section-space: 56px;
+}
+
+/* --- section headings ---------------------------------------------------- */
+
+.section-title,
+.qualitative-header h2,
+.teaser-heading h2,
+.showcase-section .teaser-heading h2,
+.authored-comparison-section .teaser-heading h2 {
+  margin: 0;
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.qualitative-header,
+.showcase-section .teaser-heading,
+.authored-comparison-section .teaser-heading {
+  width: min(100%, var(--page-text));
+  margin: 0 auto 26px;
+  padding: 0;
+}
+
+/* The section heading already names the carousel. */
+.qualitative-progress-kicker {
+  display: none;
+}
+
+.qualitative-progress-current-title {
+  margin-top: 0;
+}
+
+/* --- widths --------------------------------------------------------------- */
+
+.supplementary-figure {
+  width: min(100%, var(--page-text));
+}
+
+.pipeline-figure {
+  width: min(100%, var(--page-wide));
+  margin-top: 0;
+}
+
+main.teaser-container,
+.qualitative-container,
+.showcase-section .showcase-carousel-mount {
+  width: min(100%, calc(var(--page-wide) + 2 * var(--carousel-gutter)));
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+}
+
+.authored-comparison-container {
+  width: min(100%, var(--page-wide));
+}
+
+.qualitative-hero-row,
+.qualitative-baseline-row {
+  width: 100%;
+}
+
+.qualitative-hero-row {
+  padding: 8px 0 12px;
+}
+
+.qualitative-baseline-row {
+  padding: 4px 0 15px;
+}
+
+.qualitative-hero-row .media-title {
+  font-size: 16px;
+}
+
+.qualitative-carousel-viewport,
+.qualitative-progress {
+  border-radius: 10px;
+}
+
+/* --- vertical rhythm ------------------------------------------------------ */
+
+.teaser-section {
+  padding-top: 40px;
+  padding-bottom: var(--section-space);
+}
+
+.pipeline-section {
+  padding-bottom: var(--section-space);
+}
+
+.qualitative-section,
+.authored-comparison-section,
+.showcase-section {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+/* --- results section ------------------------------------------------------ */
+
+/* The navigator above already shows the case name and category, so the rail
+   would only repeat it; the two-by-two panels take the full row instead. */
+.showcase-section .feature-rail {
+  display: none;
+}
+
+.showcase-section .case {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.showcase-section .media-grid.is-paired {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  main.teaser-container,
+  .qualitative-container,
+  .showcase-section .showcase-carousel-mount {
+    width: 100%;
+  }
+
+  .section-title,
+  .qualitative-header h2,
+  .teaser-heading h2,
+  .showcase-section .teaser-heading h2,
+  .authored-comparison-section .teaser-heading h2 {
+    font-size: 23px;
+  }
+}
