@@ -235,7 +235,7 @@ main.teaser-container {
 
 .teaser-heading-input {
   grid-column: 2;
-  line-height: 1.15;
+  white-space: nowrap;
 }
 
 .teaser-heading-puppet {

@@ -327,7 +327,7 @@ function columnHeadings() {
   return `
     <div class="teaser-column-headings" aria-hidden="true">
       <span></span>
-      <span class="teaser-heading-input">Input<br>Image</span>
+      <span class="teaser-heading-input">Input Image</span>
       <span class="teaser-heading-puppet">Point Cloud<small>Interactive</small></span>
       <span class="teaser-heading-depth">Depth Control</span>
       <span class="teaser-heading-video">Generated Video</span>
