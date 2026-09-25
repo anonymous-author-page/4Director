@@ -489,8 +489,6 @@ mountCarousel(document.querySelector("#teaser"), TEASER_PAGES, {
   id: "teaser",
   label: "Teaser scenes",
   renderSlide: teaserPageSlide(TEASER_PAGES),
-  renderProgress: pageProgress,
-  progressBar: false,
 });
 
 mountCarousel(document.querySelector("#showcase-teaser"), casesForEdition(SHOWCASE_CASES), {
