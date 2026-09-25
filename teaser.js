@@ -288,7 +288,7 @@ function teaserRow(caseData, index, defaults) {
         ${pairs ? inputCards(caseData) : inputStack(caseData, defaults)}
 
         <figure class="media-card">
-          <figcaption class="media-title">Point Cloud</figcaption>
+          <figcaption class="media-title">Point Cloud<small>Interactive</small></figcaption>
           <div class="media-frame">
             <iframe
               data-lazy-iframe
@@ -328,7 +328,7 @@ function columnHeadings() {
     <div class="teaser-column-headings" aria-hidden="true">
       <span></span>
       <span class="teaser-heading-input">Input<br>Image</span>
-      <span class="teaser-heading-puppet">Point Cloud</span>
+      <span class="teaser-heading-puppet">Point Cloud<small>Interactive</small></span>
       <span class="teaser-heading-depth">Depth Control</span>
       <span class="teaser-heading-video">Generated Video</span>
     </div>
@@ -433,6 +433,7 @@ function wireSeedSwitchers(root) {
 
 function mountCarousel(root, entries, { id, label, kicker, title, blurb,
                                         headings, navigator = false,
+                                        progressBar = true,
                                         renderSlide, renderProgress }) {
   if (!root || entries.length === 0) {
     if (root) {
@@ -456,7 +457,7 @@ function mountCarousel(root, entries, { id, label, kicker, title, blurb,
   window.PuppeteerPage.createCarousel(
     root.querySelector(".showcase-carousel-mount"),
     entries,
-    { id, label, renderSlide, renderProgress, navigator },
+    { id, label, renderSlide, renderProgress, navigator, progressBar },
   );
   window.PuppeteerPage.observeLazyMedia(root);
   wireSeedSwitchers(root);
@@ -489,6 +490,7 @@ mountCarousel(document.querySelector("#teaser"), TEASER_PAGES, {
   label: "Teaser scenes",
   renderSlide: teaserPageSlide(TEASER_PAGES),
   renderProgress: pageProgress,
+  progressBar: false,
 });
 
 mountCarousel(document.querySelector("#showcase-teaser"), casesForEdition(SHOWCASE_CASES), {

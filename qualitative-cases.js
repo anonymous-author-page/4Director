@@ -89,6 +89,7 @@ const NO_GROUND_TRUTH_CASES = [
   },
   {
     slug: "qual-08",
+    editions: ["full"],
     title: "Car Shadow · Object Rotation",
     description: "Clockwise 180° object rotation · Static camera.",
     viewerNote: "Cyan = Moving Foreground",
@@ -427,7 +428,7 @@ function qualitativeCase(caseData, index, carouselId, totalCases) {
 
       <div class="qualitative-hero-row">
         <figure class="media-card">
-          <figcaption class="media-title">4D Scene Visualization</figcaption>
+          <figcaption class="media-title">4D Scene Visualization<small>Interactive</small></figcaption>
           <div class="media-frame">
             <iframe
               data-lazy-iframe
@@ -473,6 +474,7 @@ function createCarousel(
     renderSlide = qualitativeCase,
     renderProgress,
     navigator = false,
+    progressBar = true,
   },
 ) {
   if (!root) {
@@ -497,7 +499,9 @@ function createCarousel(
             <strong>1</strong> / ${totalCases}
           </span>
         </div>
-        <div class="qualitative-progress-bar" aria-hidden="true"><span></span></div>
+        ${progressBar
+          ? `<div class="qualitative-progress-bar" aria-hidden="true"><span></span></div>`
+          : ""}
         ${navigator
           ? `<div class="qualitative-progress-list">
                ${cases

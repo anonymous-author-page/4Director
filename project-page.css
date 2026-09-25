@@ -427,6 +427,23 @@ main.teaser-container {
   font-weight: 650;
 }
 
+.media-title small,
+.teaser-column-headings small {
+  display: block;
+  width: 100%;
+  margin-top: 1px;
+  color: var(--paper-muted);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.media-title:has(small) {
+  flex-direction: column;
+  gap: 1px;
+}
+
 .media-frame {
   position: relative;
   width: 100%;
