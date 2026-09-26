@@ -220,7 +220,7 @@ main.teaser-container {
 .teaser-column-headings {
   display: grid;
   grid-template-columns:
-    259px
+    235px
     minmax(0, 0.5fr)
     repeat(3, minmax(0, 1fr));
   gap: 3px;
@@ -254,7 +254,7 @@ main.teaser-container {
   display: grid;
   /* Wide enough for the busiest icon equation, bear + T-Rex + camera, at the
      shared icon height. */
-  grid-template-columns: 256px minmax(0, 1fr);
+  grid-template-columns: 232px minmax(0, 1fr);
   align-items: center;
   gap: 6px;
   padding: 8px 0 10px;
@@ -401,8 +401,17 @@ main.teaser-container {
   gap: 3px;
 }
 
+/* A single input is the same size as each image in a pair, and sits in the
+   middle of the taller video row. */
 .teaser-input-stack.is-single-input {
+  align-self: stretch;
+  display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.teaser-input-stack.is-single-input .media-card {
+  width: 100%;
 }
 
 .media-card {
@@ -881,7 +890,7 @@ main.teaser-container {
 
 @media (max-width: 1100px) {
   .case {
-    grid-template-columns: 256px minmax(0, 1fr);
+    grid-template-columns: 232px minmax(0, 1fr);
     align-items: flex-start;
   }
 
@@ -1723,11 +1732,17 @@ main.teaser-container,
     grid-column: 1 / -1;
   }
 
-  .teaser-section:not(.showcase-section) .teaser-input-stack,
-  .teaser-section:not(.showcase-section) .teaser-input-stack.is-single-input {
+  .teaser-section:not(.showcase-section) .teaser-input-stack {
     grid-template-columns: minmax(0, 1fr);
     width: calc(50% - 4px);
     margin: 0;
+  }
+
+  .teaser-section:not(.showcase-section) .teaser-input-stack.is-single-input {
+    width: calc(50% - 4px);
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .teaser-section .media-title {

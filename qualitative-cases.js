@@ -475,6 +475,7 @@ function createCarousel(
     renderProgress,
     navigator = false,
     progressBar = true,
+    autoAdvanceAfterPlays = 0,
   },
 ) {
   if (!root) {
@@ -574,6 +575,87 @@ function createCarousel(
     carousel.querySelectorAll(".qualitative-progress-item"),
   );
   let currentSlide = 0;
+  let stopAutoAdvance = () => {};
+
+  // Teaser pages keep playing; after every generated video has finished the
+  // requested number of plays, move to the next page and start again.
+  function armAutoAdvance() {
+    stopAutoAdvance();
+    if (
+      !autoAdvanceAfterPlays
+      || window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+    const videos = Array.from(
+      carouselSlides[currentSlide].querySelectorAll("[data-teaser-generated]"),
+    );
+    if (videos.length === 0) {
+      return;
+    }
+    const plays = new WeakMap();
+    const seenAt = new WeakMap();
+    let pending = videos.length;
+    let stopped = false;
+    const detach = [];
+    const stop = () => {
+      stopped = true;
+      detach.forEach((remove) => remove());
+    };
+    stopAutoAdvance = stop;
+    const finishedOne = () => {
+      pending -= 1;
+      if (pending > 0 || stopped) {
+        return;
+      }
+      stop();
+      const next = currentSlide + 1;
+      showSlide(next < carouselSlides.length ? next : 0);
+    };
+    videos.forEach((video) => {
+      plays.set(video, 0);
+      seenAt.set(video, 0);
+      const onTime = () => {
+        const now = video.currentTime;
+        const previous = seenAt.get(video);
+        if (now + 0.3 < previous) {
+          const count = plays.get(video) + 1;
+          plays.set(video, count);
+          if (count >= autoAdvanceAfterPlays) {
+            video.removeEventListener("timeupdate", onTime);
+            finishedOne();
+          }
+        }
+        seenAt.set(video, now);
+      };
+      const giveUp = () => {
+        video.removeEventListener("timeupdate", onTime);
+        video.removeEventListener("error", giveUp);
+        finishedOne();
+      };
+      video.addEventListener("error", giveUp);
+      detach.push(() => {
+        video.removeEventListener("timeupdate", onTime);
+        video.removeEventListener("error", giveUp);
+      });
+      const listen = () => {
+        seenAt.set(video, video.currentTime || 0);
+        video.addEventListener("timeupdate", onTime);
+      };
+      if (video.readyState > 0 && video.currentTime > 0.05) {
+        video.addEventListener("seeked", listen, { once: true });
+        detach.push(() => video.removeEventListener("seeked", listen));
+        try {
+          video.currentTime = 0;
+        } catch {
+          listen();
+        }
+      } else {
+        listen();
+      }
+      video.play().catch(() => {});
+    });
+  }
 
   function showSlide(index) {
     currentSlide = Math.max(
@@ -594,6 +676,7 @@ function createCarousel(
       cases[currentSlide].title;
     updateProgress();
     carousel.dataset.ready = "true";
+    armAutoAdvance();
   }
 
   function updateProgress() {

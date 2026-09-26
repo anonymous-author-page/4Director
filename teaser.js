@@ -434,6 +434,7 @@ function wireSeedSwitchers(root) {
 function mountCarousel(root, entries, { id, label, kicker, title, blurb,
                                         headings, navigator = false,
                                         progressBar = true,
+                                        autoAdvanceAfterPlays = 0,
                                         renderSlide, renderProgress }) {
   if (!root || entries.length === 0) {
     if (root) {
@@ -457,7 +458,15 @@ function mountCarousel(root, entries, { id, label, kicker, title, blurb,
   window.PuppeteerPage.createCarousel(
     root.querySelector(".showcase-carousel-mount"),
     entries,
-    { id, label, renderSlide, renderProgress, navigator, progressBar },
+    {
+      id,
+      label,
+      renderSlide,
+      renderProgress,
+      navigator,
+      progressBar,
+      autoAdvanceAfterPlays,
+    },
   );
   window.PuppeteerPage.observeLazyMedia(root);
   wireSeedSwitchers(root);
@@ -488,6 +497,7 @@ const TEASER_PAGES = [
 mountCarousel(document.querySelector("#teaser"), TEASER_PAGES, {
   id: "teaser",
   label: "Teaser scenes",
+  autoAdvanceAfterPlays: 2,
   renderSlide: teaserPageSlide(TEASER_PAGES),
 });
 
