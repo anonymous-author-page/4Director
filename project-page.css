@@ -220,8 +220,9 @@ main.teaser-container {
 .teaser-column-headings {
   display: grid;
   grid-template-columns:
-    227px
-    repeat(4, minmax(0, 1fr));
+    259px
+    minmax(0, 0.5fr)
+    repeat(3, minmax(0, 1fr));
   gap: 3px;
   padding: 0 0 11px;
   border-bottom: 1px solid var(--paper-line);
@@ -253,7 +254,7 @@ main.teaser-container {
   display: grid;
   /* Wide enough for the busiest icon equation, bear + T-Rex + camera, at the
      shared icon height. */
-  grid-template-columns: 224px minmax(0, 1fr);
+  grid-template-columns: 256px minmax(0, 1fr);
   align-items: center;
   gap: 6px;
   padding: 8px 0 10px;
@@ -387,14 +388,16 @@ main.teaser-container {
 
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* The input column is half a video column, so one image and each image in a
+     stacked pair share one size, and the pair is the same height as a video. */
+  grid-template-columns: minmax(0, 0.5fr) repeat(3, minmax(0, 1fr));
   align-items: start;
   gap: 3px;
 }
 
 .teaser-input-stack {
   display: grid;
-  align-self: stretch;
+  align-self: start;
   gap: 3px;
 }
 
@@ -878,12 +881,12 @@ main.teaser-container {
 
 @media (max-width: 1100px) {
   .case {
-    grid-template-columns:     224px minmax(0, 1fr);
+    grid-template-columns: 256px minmax(0, 1fr);
     align-items: flex-start;
   }
 
   .media-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 0.5fr) repeat(3, minmax(0, 1fr));
     gap: 12px 8px;
   }
 
@@ -1707,8 +1710,9 @@ main.teaser-container,
     font-size: 23px;
   }
 
-  /* Keep interactive media usable at full width, place the two passive
-     outputs side by side, and pair multiple input images in one row. */
+  /* Keep the interactive point cloud full width. Input images stay one
+     consistent size: half the row, matching Depth and Generated Video, and a
+     second input stacks under the first instead of shrinking it. */
   .teaser-section:not(.showcase-section) .media-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 8px;
@@ -1719,16 +1723,11 @@ main.teaser-container,
     grid-column: 1 / -1;
   }
 
-  .teaser-section:not(.showcase-section) .teaser-input-stack {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: end;
-    gap: 8px;
-  }
-
+  .teaser-section:not(.showcase-section) .teaser-input-stack,
   .teaser-section:not(.showcase-section) .teaser-input-stack.is-single-input {
     grid-template-columns: minmax(0, 1fr);
-    width: min(100%, 300px);
-    margin: 0 auto;
+    width: calc(50% - 4px);
+    margin: 0;
   }
 
   .teaser-section .media-title {
