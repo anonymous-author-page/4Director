@@ -221,8 +221,7 @@ main.teaser-container {
   display: grid;
   grid-template-columns:
     255px
-    minmax(0, 0.49fr)
-    repeat(3, minmax(0, 1fr));
+    repeat(4, minmax(0, 1fr));
   gap: 3px;
   padding: 0 0 11px;
   border-bottom: 1px solid var(--paper-line);
@@ -391,9 +390,7 @@ main.teaser-container {
 
 .media-grid {
   display: grid;
-  grid-template-columns:
-    minmax(0, 0.49fr)
-    repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: start;
   gap: 3px;
 }
@@ -1617,6 +1614,32 @@ main.teaser-container,
   margin-right: auto;
   margin-left: auto;
   padding: 0;
+}
+
+/* The teaser is the page's first impression, so each row runs the full
+   viewport instead of sitting inside the shared content measure. */
+#teaser {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+#teaser main.teaser-container {
+  width: 100%;
+  max-width: none;
+}
+
+#teaser .qualitative-carousel,
+#teaser .teaser-column-headings {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+#teaser .qualitative-carousel-button.is-previous {
+  left: 16px;
+}
+
+#teaser .qualitative-carousel-button.is-next {
+  right: 16px;
 }
 
 .authored-comparison-container {
