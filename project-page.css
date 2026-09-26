@@ -1629,18 +1629,48 @@ main.teaser-container,
   max-width: none;
 }
 
+/* The arrows sit in their own gutters at the viewport edges, clear of the
+   rail and the media. */
 #teaser .qualitative-carousel,
 #teaser .teaser-column-headings {
-  padding-right: 8px;
-  padding-left: 8px;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+#teaser .case {
+  grid-template-columns: 244px minmax(0, 1fr);
+}
+
+#teaser .feature-rail {
+  padding-left: 12px;
+}
+
+#teaser .teaser-column-headings {
+  grid-template-columns: 247px minmax(0, 0.5fr) repeat(3, minmax(0, 1fr));
 }
 
 #teaser .qualitative-carousel-button.is-previous {
-  left: 16px;
+  left: -46px;
 }
 
 #teaser .qualitative-carousel-button.is-next {
-  right: 16px;
+  right: -46px;
+}
+
+@media (max-width: 680px) {
+  #teaser .qualitative-carousel,
+  #teaser .teaser-column-headings {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  #teaser .qualitative-carousel-button.is-previous {
+    left: 6px;
+  }
+
+  #teaser .qualitative-carousel-button.is-next {
+    right: 6px;
+  }
 }
 
 .authored-comparison-container {
