@@ -150,12 +150,12 @@ function capabilityFor(caseData) {
 }
 
 const MODULE_ICONS = {
-  hiker: ["is-hiker-module", "feature-hiker.png"],
-  camel: ["is-camel-module", "feature-camel.png"],
-  bear: ["is-bear-module", "feature-bear.png"],
-  trex: ["is-trex-module", "feature-trex.png"],
-  camera: ["is-camera-module", "feature-camera-triangle.png"],
-  cameraB: ["is-camera-module", "feature-camera-path-b.png"],
+  hiker: ["is-hiker-module", "feature-hiker-trim.png"],
+  camel: ["is-camel-module", "feature-camel-trim.png"],
+  bear: ["is-bear-module", "feature-bear-trim.png"],
+  trex: ["is-trex-module", "feature-trex-trim.png"],
+  camera: ["is-camera-module", "feature-camera-triangle-trim.png"],
+  cameraB: ["is-camera-module", "feature-camera-path-b-trim.png"],
 };
 
 function currentEdition() {
