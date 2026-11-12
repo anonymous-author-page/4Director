@@ -1,0 +1,585 @@
+/* Rebuttal section: right after the title (same order as the hero, later in the source), before the teaser
+   (order 2). Full page width. Uses the page's own tokens from project-page.css. */
+.rebuttal-section {
+  order: 1;
+  margin-bottom: 64px; /* space between the line and the teaser below */
+  padding: 10px 56px 72px;
+  border-bottom: 2px solid var(--paper-ink);
+  background: #fff;
+}
+
+.rb-wrap {
+  display: grid;
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rb-block {
+  display: grid;
+  gap: 18px;
+  padding: 8px 0 0;
+  scroll-margin-top: 12px;
+}
+
+.rb-block + .rb-block {
+  margin-top: 18px;
+  padding-top: 34px;
+  border-top: 1px solid var(--paper-line);
+}
+
+/* Two levels of tabs, same pill shape: the view (Rebuttal / Project Page: large, black) and, inside the Rebuttal,
+   the reviewer (smaller, blue like the "Ours" box). body[data-view] is set by rebuttal.js; both views show without it. */
+.view-tabs {
+  order: 1;
+  display: flex;
+  align-self: center;
+  gap: 4px;
+  margin: 26px 16px 0;
+  padding: 5px;
+  border: 2px solid var(--paper-ink);
+  border-radius: 999px;
+  background: #fff;
+}
+
+.view-tab,
+.rb-tab {
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.view-tab {
+  padding: 12px 34px;
+  font-size: 22px;
+}
+
+.view-tab:hover {
+  background: #f1f3f4;
+}
+
+.view-tab[aria-selected="true"] {
+  background: var(--paper-ink);
+  color: #fff;
+}
+
+.view-tab:focus-visible,
+.rb-tab:focus-visible {
+  outline: 2px solid #1a73e8;
+  outline-offset: 2px;
+}
+
+.rb-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 18px auto 10px;
+  padding: 4px;
+  border: 1px solid #c6d4ea;
+  border-radius: 28px;
+  background: #fff;
+}
+
+.rb-tab {
+  padding: 9px 24px;
+  font-size: 18px;
+}
+
+.rb-tab:hover {
+  background: #e8f0fe;
+}
+
+.rb-tab[aria-selected="true"] {
+  background: #1a73e8;
+  color: #fff;
+}
+
+.rb-panel {
+  display: grid;
+  gap: 24px;
+}
+
+.rb-panel[hidden] {
+  display: none;
+}
+
+.rb-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+body[data-view="rebuttal"] > :not(.publication-hero):not(.view-tabs):not(#rebuttal):not(.site-footer) {
+  display: none !important;
+}
+
+body[data-view="project"] > #rebuttal {
+  display: none !important;
+}
+
+/* The section title "Rebuttal": one size above the reviewer headers. */
+.rebuttal-section .section-title {
+  margin: 0 0 6px;
+  font-size: 44px;
+  letter-spacing: -0.025em;
+}
+
+/* Header: which reviewer question, then (the issue). Large and centered. */
+.rb-head {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.rb-head h3 {
+  margin: 0;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.rb-head h3 .rb-issue {
+  color: var(--paper-muted);
+  font-weight: 500;
+}
+
+.rb-head h3 .rb-issue.is-line {
+  display: block;
+}
+
+.rb-head .rb-also {
+  margin: 0;
+  color: var(--paper-muted);
+  font-size: 16px;
+}
+
+/* Table. Each row is a 2-line grid: videos (line 1) and their captions (line 2), every item pinned to its
+   column (c1..c6), so all videos of a row share top and bottom edges and columns line up across rows. */
+.rb-table {
+  display: grid;
+  gap: 22px;
+}
+
+/* Several tables in one block (e.g. ours, then baselines) are spaced like rows. */
+.rb-player {
+  display: grid;
+  gap: 22px;
+}
+
+.rb-tr {
+  display: grid;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+/* One grid for every table, so every video in the section has the same size. */
+.rb-tr {
+  grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 108px minmax(0, 1fr);
+}
+
+/* Rows of four outputs (baselines, trajectories): label, Ours box, four videos. Same column widths for the videos. */
+.rb-table.is-grid4 .rb-tr {
+  grid-template-columns: 150px 108px repeat(4, minmax(0, 1fr));
+}
+
+/* Rows of three media (label | input | control | model | output), videos as wide as in the other tables. */
+.rb-table.is-grid3 .rb-tr {
+  grid-template-columns: 150px repeat(2, calc((100% - 318px) / 4)) 108px calc((100% - 318px) / 4);
+  justify-content: center;
+}
+
+.rb-tr > .c1 { grid-column: 1; }
+.rb-tr > .c2 { grid-column: 2; }
+.rb-tr > .c3 { grid-column: 3; }
+.rb-tr > .c4 { grid-column: 4; }
+.rb-tr > .c5 { grid-column: 5; }
+.rb-tr > .c6 { grid-column: 6; }
+
+/* A wide cell across all media columns (e.g. a large interactive scene). */
+.rb-tr > .cw {
+  grid-column: 2 / -1;
+  justify-self: center;
+}
+
+.rb-tr > .rb-v.cw {
+  width: min(100%, 960px);
+}
+
+/* "In 3D": interactive scenes across the full width, above a block's results. */
+.rb-3d {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.rb-3d-head {
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.rb-3d-head small {
+  margin-left: 8px;
+  color: var(--paper-muted);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.rb-3d > .rb-pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 14px;
+}
+
+/* Large interactive scenes side by side in one row. */
+.rb-tr > .rb-pair {
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+.rb-pair figure {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.rb-pair .rb-scene {
+  display: block;
+  width: 100%;
+  aspect-ratio: 832 / 480;
+  border-radius: 6px;
+}
+
+.rb-pair figcaption {
+  color: var(--paper-muted);
+  font-size: 15px;
+  text-align: center;
+}
+
+.rb-pair figcaption b {
+  color: var(--paper-ink);
+  font-weight: 600;
+}
+
+.rb-tr > .rb-v,
+.rb-tr > .rb-th,
+.rb-tr > .rb-ours,
+.rb-tr > .rb-textcell {
+  grid-row: 1;
+}
+
+.rb-tr > .rb-cap {
+  grid-row: 2;
+}
+
+.rb-thead {
+  grid-template-rows: auto;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.rb-thead > div {
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.rb-th {
+  display: grid;
+  align-self: center;
+  gap: 2px;
+  color: var(--paper-ink);
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.rb-th small {
+  color: var(--paper-muted);
+  font-family: "Noto Sans", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.rb-num {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  background: var(--paper-ink);
+  color: #fff;
+  font-size: 15px;
+}
+
+.rb-v {
+  display: block;
+  align-self: center;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 832 / 480;
+  border-radius: 6px;
+  background: #000;
+  object-fit: cover;
+}
+
+.rb-scene {
+  border: 0;
+  background: #f1f3f4;
+}
+
+.rb-cap {
+  color: var(--paper-muted);
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.rb-cap b {
+  color: var(--paper-ink);
+  font-weight: 600;
+}
+
+.rb-colname {
+  display: none;
+}
+
+/* Text cell: the prompt (boat). */
+.rb-textcell {
+  align-self: center;
+  min-width: 0;
+}
+
+.rb-textcell.is-prompt {
+  display: grid;
+  gap: 4px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.rb-textcell .rb-k {
+  color: var(--paper-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.rb-textcell p {
+  margin: 0;
+}
+
+.rb-textcell ins {
+  padding: 0 2px;
+  border-radius: 2px;
+  background: #fde293;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Keyframe cell: which frames are authored. */
+.rb-textcell.is-keys {
+  display: grid;
+  gap: 4px;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.rb-textcell.is-keys b {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+/* "Ours" box between the control and the output. */
+.rb-ours {
+  display: grid;
+  align-self: center;
+  justify-items: center;
+  gap: 2px;
+  padding: 12px 4px;
+  border-radius: 10px;
+  background: #1a73e8;
+  color: #fff;
+  font-family: "Google Sans", "Noto Sans", sans-serif;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.rb-ours small {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.rb-ours b {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.rb-ours::after {
+  content: "\2192";
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* A baseline's box: same shape as ours, outlined instead of blue. */
+.rb-ours.is-model {
+  border: 2px solid var(--paper-ink);
+  background: #fff;
+  color: var(--paper-ink);
+}
+
+.rb-ours.is-model b {
+  font-size: 14px;
+}
+
+.rb-conclusion {
+  max-width: 1100px;
+  margin: 0 auto;
+  color: var(--paper-ink);
+  font-size: 17px;
+  text-align: center;
+}
+
+.rb-conclusion b {
+  font-weight: 600;
+}
+
+/* User study: the form header (readable size), then several questions in one row, all the same size. */
+.rb-study {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  margin: 0;
+}
+
+.rb-study img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.rb-study-head {
+  max-width: 640px;
+}
+
+.rb-study-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+
+.rb-study figcaption {
+  color: var(--paper-muted);
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Narrow screens: one column, each video followed by its caption, in source order. */
+@media (max-width: 900px) {
+  .rebuttal-section {
+    margin-bottom: 40px;
+    padding: 6px 14px 48px;
+  }
+
+  .rb-head h3 {
+    font-size: 22px;
+  }
+
+  .view-tab {
+    padding: 9px 20px;
+    font-size: 18px;
+  }
+
+  .rb-tab {
+    padding: 8px 18px;
+    font-size: 16px;
+  }
+
+  .rb-tab-pre {
+    display: none;
+  }
+
+  .rebuttal-section .section-title {
+    font-size: 32px;
+  }
+
+  .rb-tr,
+  .rb-table.is-grid4 .rb-tr,
+  .rb-table.is-grid3 .rb-tr {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    padding-top: 14px;
+    border-top: 1px solid var(--paper-line);
+  }
+
+  .rb-tr > [class*="c"] {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .rb-thead {
+    display: none;
+  }
+
+  .rb-ours {
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .rb-study-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rb-tr > .rb-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rb-3d > .rb-pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rb-colname {
+    display: block;
+    color: var(--paper-ink);
+    font-weight: 600;
+  }
+}
